@@ -1,0 +1,20 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Cart;
+use Illuminate\Database\Seeder;
+
+class CartSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $carts = ['total' => 0.00];
+        Cart::insert($carts);
+    }
+}
