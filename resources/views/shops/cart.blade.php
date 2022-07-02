@@ -2,10 +2,16 @@
 
 @section('content')
 <section id="cart" class="section-p1">
+    @if (session('message'))
+    <div class="alert alert-sucess">
+        Item removed
+    </div>
+    @endif
+    @if ( Cart::count() > 0)
     <table>
         <thead>
             <tr>
-                <td>Remove</td>
+                <td></td>
                 <td>Image</td>
                 <td>Product</td>
                 <td>Price</td>
@@ -14,32 +20,31 @@
             </tr>
         </thead>
         <tbody>
+            @foreach (Cart::content() as $cartItem)
             <tr>
-                <td><a href="#"><i class="bi bi-trash"></i></a></td>
-                <td> <img src="{{ asset('img/f1.jpg') }}" alt=""></td>
-                <td>Cartoon T-Shirts</td>
-                <td>$ 99.99</td>
-                <td><input type="number" value="1"></td>
-                <td>$ 99.99</td>
+                <td>
+                    <form action="{{ route('cart.destroy', $cartItem->rowId) }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit "><i class="bi bi-trash delete"> </i></button>
+                    </form>
+                </td>
+                <td>
+                    <a href=" {{ route('shops.show' ,$cartItem->id) }}">
+                        <img src="{{ asset($cartItem->options['image']) }}" alt="">
+                    </a>
+                </td>
+                <td>{{ $cartItem->name}}</td>
+                <td>$ {{ $cartItem->price }}</td>
+                <td><input type="number" value="{{ $cartItem->qty }}" disabled></td>
+                <td>$ {{ $cartItem->price * $cartItem->qty}}</td>
             </tr>
-            <tr>
-                <td><a href="#"><i class="bi bi-trash"></i></a></td>
-                <td> <img src="{{ asset('img/f2.jpg') }}" alt=""></td>
-                <td>T-Shirts</td>
-                <td>$ 49.99</td>
-                <td><input type="number" value="1"></td>
-                <td>$ 49.99</td>
-            </tr>
-            <tr>
-                <td><a href="#"><i class="bi bi-trash"></i></a></td>
-                <td> <img src="{{ asset('img/f3.jpg') }}" alt=""></td>
-                <td>Long sleeves</td>
-                <td>$ 29.99</td>
-                <td><input type="number" value="1"></td>
-                <td>$ 29.99</td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
+    @else
+    <p>No items in the cart</p>
+    @endif
 </section>
 <section id="cart-add" class="section-p1">
     <div id="coupon">
@@ -54,15 +59,15 @@
         <table>
             <tr>
                 <td>Cart Subtotal</td>
-                <td>$ 399.99</td>
+                <td>$ {{ Cart::subtotal() }}</td>
             </tr>
             <tr>
                 <td>Shipping</td>
-                <td>Free</td>
+                <td>{{ Cart::tax()}}</td>
             </tr>
             <tr>
                 <td>Total</td>
-                <td>$ 399.99</td>
+                <td>$ {{ Cart::total() }}</td>
             </tr>
         </table>
         <button>Order now</button>

@@ -505,7 +505,11 @@ footer .row img {
     table-layout: fixed;
     white-space: nowrap;
 }
-
+#cart button {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    background-color: #fff;
+}
 #cart table img {
     width: 70px;
 }
@@ -576,7 +580,7 @@ footer .row img {
     transition: 0.3s ease;
 }
 #coupon button:hover {
-    background-color: #5fd1c9;
+    background-color: #44aea7;
 }
 #subtotal {
     width: 50%;
@@ -599,4 +603,7 @@ footer .row img {
     color: #fff;
     background-color: #088178;
     padding: 12px 20px;
+}
+#subtotal button:hover {
+    background-color: #44aea7;
 }

@@ -13,20 +13,14 @@ class MainController extends Controller
     //
     public function index()
     {
-        $products = Product::all();
-
+        $products = Product::paginate(12);
         return view('shops.index', compact('products'));
     }
 
-    public function product($id)
+    public function show($id)
     {
         $product = Product::findorFail($id);
         return view('shops.product', compact('product'));
-    }
-    public function cart()
-    {
-        $cart = Cart::content();
-        return view('shops.cart', compact('cart'));
     }
 
     public function categories($id)

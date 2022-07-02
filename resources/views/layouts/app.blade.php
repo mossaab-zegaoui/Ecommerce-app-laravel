@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- <script src="{{ asset('public/js/jquery.nice-number.js') }}"></script> -->
-    @livewireStyles
 </head>
 
 <body>
@@ -33,7 +32,5 @@
             @yield('content')
         </main>
     </div>
-    @livewireScripts
 </body>
-
 </html>

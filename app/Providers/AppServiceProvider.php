@@ -26,8 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Paginator::useBootstrapThree();
-
+        Paginator::useBootstrap();
         View::composer(['shops.index', 'shops.categories', 'shops.product'], CategoryComposer::class);
     }
 }

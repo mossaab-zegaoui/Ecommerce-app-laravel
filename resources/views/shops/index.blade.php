@@ -13,7 +13,7 @@
         <div class="pro-container">
             @foreach($products as $product)
             <div class="pro">
-                <a href="{{ route('shops.product' ,$product->id) }}"><img src=" {{ asset($product->image) }}" alt=""></a>
+                <a href="{{ route('shops.show' ,$product->id) }}"><img src=" {{ asset($product->image) }}" alt=""></a>
                 <div class="des">
                     <span>{{ $product->name }}</span>
                     <h5>{{ $product->description }}</h5>
@@ -24,10 +24,13 @@
                         <i class="bi bi-star-fill"></i>
                     </div>
                     <h4>$ {{ $product->price_ht}}</h4>
-                    <a href="{{ route('shops.product' ,$product->id) }}"><i class="bi bi-cart3 cart"></i></a>
+                    <a href="{{ route('shops.show' ,$product->id) }}"><i class="bi bi-cart3 cart"></i></a>
                 </div>
             </div>
             @endforeach
+        </div>
+        <div class="mt-4 d-flex justify-content-end">
+            {{ $products->links() }}
         </div>
     </div>
 </section>
