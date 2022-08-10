@@ -22,15 +22,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- <script src="{{ asset('public/js/jquery.nice-number.js') }}"></script> -->
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
     @include('layouts.nav')
+
     <div id="app">
         <main>
             @yield('content')
         </main>
     </div>
+    @yield('extra-js')
 </body>
+
 </html>

@@ -62,19 +62,21 @@
                 <td>$ {{ Cart::subtotal() }}</td>
             </tr>
             <tr>
-                <td>Shipping</td>
+                <td>Tax ( 21%) </td>
                 <td>{{ Cart::tax()}}</td>
             </tr>
             <tr>
-                <td>Total</td>
+                <td>Cart Total</td>
                 <td>$ {{ Cart::total() }}</td>
             </tr>
         </table>
-        <button>Order now</button>
+        <a href=" {{ route('checkout.index') }}">
+            <button>Order now</button>
+        </a>
     </div>
 </section>
 
-<footer class="section-p1">
+<footer class="section-p1 cart-bg">
     <div class="col">
         <img src="{{ asset('img/logo.png') }}" alt="" class="logo">
         <h4>Contact</h4>

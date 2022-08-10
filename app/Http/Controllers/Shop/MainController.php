@@ -13,8 +13,9 @@ class MainController extends Controller
     //
     public function index()
     {
+        $categories = Category::all();
         $products = Product::paginate(12);
-        return view('shops.index', compact('products'));
+        return view('shops.index', compact('products','categories'));
     }
 
     public function show($id)
@@ -27,5 +28,17 @@ class MainController extends Controller
     {
         $products = Product::all();
         return view('shops.categories', compact('products'));
+    }
+    public function blog()
+    {
+        return view('blog');
+    }
+    public function about()
+    {
+        return view('about');
+    }
+    public function contact()
+    {
+        return view('contact');
     }
 }

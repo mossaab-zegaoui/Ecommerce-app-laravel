@@ -336,7 +336,7 @@
 </section>
 <footer class="section-p1">
     <div class="col">
-        <img src="{{ asset('img/app.jpg') }}" alt="" class="logo">
+        <img src="{{ asset('img/logo.png') }}" alt="" class="logo">
         <h4>Contact</h4>
         <p><strong>Address: </strong> 562 Wellington Road</p>
         <p><strong>Phones: </strong> 562 Wellington Road</p>

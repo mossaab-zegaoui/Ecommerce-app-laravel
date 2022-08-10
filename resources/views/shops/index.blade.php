@@ -10,24 +10,36 @@
             {{ session('message')}}
             @endif
         </p>
-        <div class="pro-container">
-            @foreach($products as $product)
-            <div class="pro">
-                <a href="{{ route('shops.show' ,$product->id) }}"><img src=" {{ asset($product->image) }}" alt=""></a>
-                <div class="des">
-                    <span>{{ $product->name }}</span>
-                    <h5>{{ $product->description }}</h5>
-                    <div class="star">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <h4>$ {{ $product->price_ht}}</h4>
-                    <a href="{{ route('shops.show' ,$product->id) }}"><i class="bi bi-cart3 cart"></i></a>
-                </div>
+        <div id="categories">
+            <div class="side-bar">
+                <h6>Categories</h6>
+                <ul>
+                    @foreach($categories as $category)
+                    <li>
+                        <a href="">{{ $category->name }}</a>
+                    </li>
+                    @endforeach
+                </ul>
             </div>
-            @endforeach
+            <div class="pro-container">
+                @foreach($products as $product)
+                <div class="pro">
+                    <a href="{{ route('shops.show' ,$product->id) }}"><img src=" {{ asset($product->image) }}" alt=""></a>
+                    <div class="des">
+                        <span>{{ $product->name }}</span>
+                        <h5>{{ $product->description }}</h5>
+                        <div class="star">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <h4>$ {{ $product->price_ht}}</h4>
+                        <a href="{{ route('shops.show' ,$product->id) }}"><i class="bi bi-cart3 cart"></i></a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
         </div>
         <div class="mt-4 d-flex justify-content-end">
             {{ $products->links() }}
