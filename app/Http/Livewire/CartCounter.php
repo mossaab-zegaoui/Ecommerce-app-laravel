@@ -14,4 +14,5 @@ class CartCounter extends Component
         $cart_count =  Cart::content()->count();
         return view('livewire.cart-counter', compact('cart_count'));
     }
+   
 }

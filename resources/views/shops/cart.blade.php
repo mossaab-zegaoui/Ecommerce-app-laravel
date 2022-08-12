@@ -3,11 +3,17 @@
 @section('content')
 <section id="cart" class="section-p1">
     @if (session('message'))
-    <div class="alert alert-sucess">
-        Item removed
+    <div class="alert alert-success" role="alert">
+        {{ session('message')}}
+    </div>
+    @endif
+    @if (session('Error'))
+    <div class="alert alert-warning" role="alert">
+        {{ session('Error')}}
     </div>
     @endif
     @if ( Cart::count() > 0)
+
     <table>
         <thead>
             <tr>
@@ -50,8 +56,12 @@
     <div id="coupon">
         <h3>Apply coupon</h3>
         <div>
-            <input type="text" placeholder="Enter your coupon">
-            <button>Apply coupon</button>
+            <form action="{{ route('coupon.store') }}" method="POST">
+                @csrf
+                <input type="text" placeholder="Enter your coupon" name="code" id="code">
+                <button type="submit">Apply coupon</button>
+            </form>
+
         </div>
     </div>
     <div id="subtotal">
@@ -61,15 +71,46 @@
                 <td>Cart Subtotal</td>
                 <td>$ {{ Cart::subtotal() }}</td>
             </tr>
+            @if(session()->has('coupon'))
+            <tr>
+                <td>Discount ({{ session()->get('coupon')['name']}})</td>
+                <td>$ {{ $discount}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <form action="{{ route('coupon.destroy') }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-info">Remove Coupon</button>
+                    </form>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>New Subtotal</td>
+                <td>$ {{ $newSubtotal }}</td>
+            </tr>
+
             <tr>
                 <td>Tax ( 21%) </td>
-                <td>{{ Cart::tax()}}</td>
+                <td>{{ $newTax }}</td>
+            </tr>
+            <tr>
+                <td>Cart Total</td>
+                <td>$ {{ $newTotal }}</td>
+            </tr>
+            @else
+            <tr>
+                <td>Tax ( 21%) </td>
+                <td>{{ Cart::tax() }}</td>
             </tr>
             <tr>
                 <td>Cart Total</td>
                 <td>$ {{ Cart::total() }}</td>
             </tr>
+            @endif
         </table>
+        <a href=" {{ route('shops.index') }}"><button>Continue shopping</button></a>
         <a href=" {{ route('checkout.index') }}">
             <button>Order now</button>
         </a>

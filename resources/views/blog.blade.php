@@ -6,49 +6,21 @@
 
 </section>
 <section id="blog">
+    @foreach($posts as $post)
     <div class="blog-box">
         <div class="blog-img">
-            <img src="img/b1.jpg" alt="" srcset="">
+            <img src="{{ $post->image}}" alt="" srcset="">
         </div>
         <div class="blog-details">
-            <h4> BLOG 1</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, natus. Totam explicabo quas quo sit, debitis tempora eaque illo fugit hic ipsa blanditiis laborum! Sequi necessitatibus temporibus doloribus placeat id.</p>
+            <h4> {{ $post->title}}</h4>
+            <p>{{ $post->description}}.</p>
             <a href="#">Read more</a>
         </div>
-        <h1>15/07/2022</h1>
+        <h1>{{ $post->created_at}}</h1>
     </div>
-    <div class="blog-box">
-        <div class="blog-img">
-            <img src="img/b1.jpg" alt="" srcset="">
-        </div>
-        <div class="blog-details">
-            <h4> BLOG 2</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, natus. Totam explicabo quas quo sit, debitis tempora eaque illo fugit hic ipsa blanditiis laborum! Sequi necessitatibus temporibus doloribus placeat id.</p>
-            <a href="#">Read more</a>
-        </div>
-        <h1>15/07/2022</h1>
-    </div>
-    <div class="blog-box">
-        <div class="blog-img">
-            <img src="img/b1.jpg" alt="" srcset="">
-        </div>
-        <div class="blog-details">
-            <h4> BLOG 3</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, natus. Totam explicabo quas quo sit, debitis tempora eaque illo fugit hic ipsa blanditiis laborum! Sequi necessitatibus temporibus doloribus placeat id.</p>
-            <a href="#">Read more</a>
-        </div>
-        <h1>15/07/2022</h1>
-    </div>
-    <div class="blog-box">
-        <div class="blog-img">
-            <img src="img/b1.jpg" alt="" srcset="">
-        </div>
-        <div class="blog-details">
-            <h4> BLOG 1</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, natus. Totam explicabo quas quo sit, debitis tempora eaque illo fugit hic ipsa blanditiis laborum! Sequi necessitatibus temporibus doloribus placeat id.</p>
-            <a href="#">Read more</a>
-        </div>
-        <h1>15/07/2022</h1>
+    @endforeach
+    <div class="mt-4 d-flex justify-content-end">
+        {{ $posts->links() }}
     </div>
 </section>
 

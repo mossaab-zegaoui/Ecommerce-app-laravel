@@ -16,11 +16,12 @@
                 <ul>
                     @foreach($categories as $category)
                     <li>
-                        <a href="">{{ $category->name }}</a>
+                        <a href="{{ route('shops.categories' ,$category->id) }}">{{ $category->name }}</a>
                     </li>
                     @endforeach
                 </ul>
             </div>
+            <a href="{{ route('shops.index') }}">All categories</a>
             <div class="pro-container">
                 @foreach($products as $product)
                 <div class="pro">

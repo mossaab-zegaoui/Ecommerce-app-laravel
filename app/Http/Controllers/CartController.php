@@ -10,7 +10,12 @@ class CartController extends Controller
 {
     public function index()
     {
-        return view('shops.cart');
+        $tax = Cart::tax() / 100;
+        $discount = session()->get('coupon')['discount'] ?? 0;
+        $newSubtotal = (Cart::subtotal() - $discount);
+        $newTax = $newSubtotal * $tax;
+        $newTotal = $newSubtotal + $newTax;
+        return view('shops.cart', compact('discount', 'newSubtotal', 'newTax', 'newTotal'));
     }
     public function store(Request $request)
     {

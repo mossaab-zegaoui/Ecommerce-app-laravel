@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\Shop\MainController;
-
+use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,15 +32,23 @@ Route::get('/contact', [MainController::class, 'contact'])->name(('contact'));
 // Shops
 Route::get('/shops', [MainController::class, 'index'])->name(('shops.index'));
 Route::get('/shops/{shop}/product', [MainController::class, 'show'])->name(('shops.show'));
-Route::get('/shops/categories/{category}', [MainController::class, 'categories'])->name(('shops.categories'));
+Route::get('/shops/{category}/categories', [MainController::class, 'categories'])->name(('shops.categories'));
 // Cart
 Route::get('/shops/cart', [CartController::class, 'index'])->name('shops.cart');
 Route::delete('/shops/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::POST('/shops', [CartController::class, 'store'])->name(('cart.store'));
 
 
+// Coupons
+Route::post('/coupon', [CouponsController::class, 'store'])->name('coupon.store');
+Route::delete('/coupon', [CouponsController::class, 'destroy'])->name('coupon.destroy');
+
 // Checkout
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::POST('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('/checkout/destroy', [CheckoutController::class, 'destroy'])->name('checkout.destroy');
+
+
 Route::get('/subscribe', function () {
     return view('subscription');
 });

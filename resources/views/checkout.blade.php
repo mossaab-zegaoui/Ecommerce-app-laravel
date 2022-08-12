@@ -2,6 +2,11 @@
 @section('content')
 <section id="checkout">
     <div class="container">
+        @if (session('message'))
+        <div class="alert alert-success" role="alert">
+            {{ session('message')}}
+        </div>
+        @endif
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -47,175 +52,91 @@
                         <strong>{{ Cart::total() }}</strong>
                     </li>
                 </ul>
-
-                <form class="card p-2">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Promo code">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary">Redeem</button>
-                        </div>
-                    </div>
-                </form>
             </div>
             <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Billing address</h4>
-                <form class="needs-validation" novalidate>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="firstName">First name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                            <div class="invalid-feedback">
-                                Valid first name is required.
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="lastName">Last name</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                            <div class="invalid-feedback">
-                                Valid last name is required.
-                            </div>
-                        </div>
+                <form action="{{ route('checkout.store') }}" id="payment-form" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="card-holder-name"> name</label>
+                        <input id="card-holder-name" class="form-control" id="card-holder-name" name="card-holder-name" type="text" value="{{ old('card-holder-name') }}">
                     </div>
-
-                    <div class="mb-3">
-                        <label for="username">Username</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">@</span>
-                            </div>
-                            <input type="text" class="form-control" id="username" placeholder="Username" required>
-                            <div class="invalid-feedback" style="width: 100%;">
-                                Your username is required.
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}">
                     </div>
-
-                    <div class="mb-3">
-                        <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                        <div class="invalid-feedback">
-                            Please enter a valid email address for shipping updates.
-                        </div>
+                    <div class="form-group">
+                        <label for="province">Province</label>
+                        <input type="text" class="form-control" id="province" name="province" value="{{ old('province') }}">
                     </div>
-
-                    <div class="mb-3">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-                        <div class="invalid-feedback">
-                            Please enter your shipping address.
-                        </div>
+                    <div class="form-group">
+                        <label for="postalcode">Postal Code</label>
+                        <input type="text" class="form-control" id="postalcode" name="postalcode" value="{{ old('postalcode') }}">
                     </div>
-
-                    <div class="mb-3">
-                        <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}">
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-5 mb-3">
-                            <label for="country">Country</label>
-                            <select class="form-select d-block w-100" id="country" required>
-                                <option value="">Choose...</option>
-                                <option>United States</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please select a valid country.
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="state">State</label>
-                            <select class="form-select d-block w-100" id="state" required>
-                                <option value="">Choose...</option>
-                                <option>California</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please provide a valid state.
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="zip">Zip</label>
-                            <input type="text" class="form-control" id="zip" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Zip code required.
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="mb-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Default checkbox
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked">
-                            Save this information for later
-                        </label>
-                    </div>
-
-                    <hr class="mb-4">
-                    <h4 class="mb-3">Payment</h4>
-
-                    <div class="d-block my-3">
-                        <div class="custom-control custom-radio">
-                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                            <label class="custom-control-label" for="credit">Credit card</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="debit">Debit card</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="paypal">PayPal</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="cc-name">Name on card</label>
-                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                            <small class="text-muted">Full name as displayed on card</small>
-                            <div class="invalid-feedback">
-                                Name on card is required
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="cc-number">Credit card number</label>
-                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Credit card number is required
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 mb-3">
-                            <label for="cc-expiration">Expiration</label>
-                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Expiration date required
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="cc-cvv">CVV</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                            <div class="invalid-feedback">
-                                Security code required
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="mb-4">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-                </form>
+                    <!-- Stripe Elements Placeholder -->
+                    <label for="card-element">
+                        Credit or debit card
+                    </label>
+                    <div id="card-element"></div>
+                    <!-- Used to display Element errors. -->
+                    <div id="card-errors" role="alert"></div>
+                    <button type="submit" id="card-button" class="btn btn-info">
+                        Process Payment
+                    </button>
             </div>
+
+            </form>
         </div>
+    </div>
     </div>
 </section>
 
 @endsection
 @section('extra-js')
+<script src="https://js.stripe.com/v3/"></script>
 <script>
     (function() {
+
+        const stripe = Stripe(" {{ env('STRIPE_KEY') }}");
+        const elements = stripe.elements();
+
+        const card = elements.create('card', {
+            hidePostalCode: true
+        });
+        card.mount('#card-element');
+
+        // Create a token or display an error when the form is submitted.
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    // Inform the customer that there was an error.
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server.
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+
+        function stripeTokenHandler(token) {
+            // Insert the token ID into the form so it gets submitted to the server
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+
+            // Submit the form
+            form.submit();
+        }
 
     })();
 </script>
