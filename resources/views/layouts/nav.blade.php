@@ -1,5 +1,5 @@
 <section id="header">
-    <a href="{{ route('home') }}"><img src="{{ asset('img/logo.png') }}" alt="" class="logo"></a>
+    <a href="{{ route('home') }}"><img src="{{ asset('img/logo1.png') }}" alt="" class="logo"></a>
     <div>
         <ul id="navbar">
             <li><a href="{{ route('home') }}" class="active" id="link1">Home</a></li>

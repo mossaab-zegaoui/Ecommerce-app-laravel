@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section id="product1" class="">
+<!-- <section id="product1" class="">
     <div class="container">
         <h2>Featured Products</h2>
         <p>
@@ -46,8 +46,101 @@
             {{ $products->links() }}
         </div>
     </div>
+</section> -->
+<section>
+    <div class="container section-m1">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Category</h2>
+                    <div class="panel-group category-products" id="accordian">
+                        <!--category-productsr-->
+                        @foreach($categories as $category)
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a href="{{ route('shops.categories' ,$category->id) }}">{{ $category->name }}</a>
+                                </h4>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <!--/category-productsr-->
+
+                    <div class="brands_products">
+                        <!--brands_products-->
+                        <h2>Brands</h2>
+                        <div class="brands-name">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li>
+                                    <a href=""> <span class="pull-right">(50)</span>Acne</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span class="pull-right">(56)</span>Grüne Erde</a>
+                                </li>
+                                <li>
+                                    <a href=""> <span class="pull-right">(27)</span>Albiro</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span class="pull-right">(32)</span>Ronhill</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span class="pull-right">(5)</span>Oddmolly</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/brands_products-->
+                    <div class="price-range">
+                        <!--price-range-->
+                        <h2>Price Range</h2>
+                        <div class="well">
+                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" /><br />
+                            <b>$ 0</b> <b class="pull-right">$ 600</b>
+                        </div>
+                    </div>
+                    <!--/price-range-->
+                </div>
+            </div>
+
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">Features Items</h2>
+                    @if( session('message'))
+                    {{ session('message')}}
+                    @endif
+                    @foreach($products as $product)
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <a href="{{ route('shops.show' ,$product->id) }}"><img src=" {{ asset($product->image) }}" alt=""></a>
+                                    <h2>$ {{ $product->price_ht}}</h2>
+                                    <p>{{ $product->description }}</p>
+                                    <a href="{{ route('shops.show' ,$product->id) }}" id="button-cart">
+                                        <i class="bi bi-cart3"></i>
+                                        Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @endforeach
+                </div>
+                <ul class="pagination">
+                    {!! $products->links() !!}
+                </ul>
+            </div>
+            <!--features_items-->
+        </div>
+    </div>
+    </div>
 </section>
-<section id="newsletter" class="section-p1 section-m1">
+<section id="newsletter" class="section-p1">
     <div class="news-text">
         <h4>Sign up for our news letter</h4>
         <p>Get E-mail updates about our latest shop and <span>special offers</span></p>
@@ -58,50 +151,6 @@
     </div>
 </section>
 
-<footer class="section-p1">
-    <div class="col">
-        <img src="img/logo.png" alt="" class="logo">
-        <h4>Contact</h4>
-        <p><strong>Address: </strong> 562 Wellington Road</p>
-        <p><strong>Phones: </strong> 562 Wellington Road</p>
-        <p><strong>Hours: </strong> 562 Wellington Road</p>
-        <div class="follow">
-            <h4>Follow us</h4>
-            <div class="icon">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-twitter"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-youtube"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <h4>About</h4>
-        <a href="#">About us </a>
-        <a href="#">Delivery Information </a>
-        <a href="#">Privacy Policy </a>
-        <a href="#">Terms & Conditions </a>
-        <a href="#">Contact us </a>
-    </div>
-    <div class="col">
-        <h4>Account</h4>
-        <a href="#">Sign In </a>
-        <a href="#">View Cart </a>
-        <a href="#">My wishlist </a>
-        <a href="#">Track My Order </a>
-        <a href="#">Help</a>
-    </div>
-    <div class="col install">
-        <h4>Install app</h4>
-        <p>From App store or Google App</p>
-        <div class="row">
-            <img src="img/app.jpg" alt="">
-            <img src="img/play.jpg" alt="">
-        </div>
-        <p>Secure Payments Gateways</p>
-        <img src="img/pay.png" alt="">
-    </div>
-</footer>
 <script>
     const link = document.querySelectorAll("#link1, #link3, #link4, #link5, #link6");
     for (var i = 0; i < link.length; i++) {
@@ -109,4 +158,11 @@
     }
     document.getElementById('link2').classList.add('active');
 </script>
+@endsection
+@section('extra-js')
+<script src="js/jquery.js"></script>
+<script src="js/price-range.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script src="js/main.js"></script>
 @endsection

@@ -8,31 +8,28 @@
         <h1 class="home_h1"><span>Get up to 30% Off <br>
             </span> New Arrivals</h1>
         <div class="button_shop_now">
-            <button>Shop now</button>
+            <button> <a href="{{ route('shops.index') }}"> Shop now </a></button>
         </div>
     </div>
 </section>
 <section id="categories" class="w-100">
     <div class="row p-0 m-0">
         <div class="one col-lg-4 col-md-12 col-12 p-0">
-            <img class=" img-fluid" src="{{ asset('img/categorie1.webp') }}" alt="" srcset="">
+            <img class=" img-fluid" src="{{ asset('img/man.webp') }}" alt="" srcset="">
             <div class="details">
-                <h2>Women's</h2>
-                <button class="text-uppercase">Shop now</button>
+                <button class="text-uppercase">MAN</button>
             </div>
         </div>
         <div class="one col-lg-4 col-md-12 col-12 p-0">
-            <img class=" img-fluid" src="{{ asset('img/categorie2.webp') }}" alt="" srcset="">
+            <img class=" img-fluid" src="{{ asset('img/woman.webp') }}" alt="" srcset="">
             <div class="details">
-                <h2>Men's</h2>
-                <button class="text-uppercase">Shop now</button>
+                <button class="text-uppercase">WOMAN</button>
             </div>
         </div>
         <div class="one col-lg-4 col-md-12 col-12 p-0">
-            <img class=" img-fluid" src="{{ asset('img/categorie3.webp') }}" alt="" srcset="">
+            <img class=" img-fluid" src="{{ asset('img/kids.webp') }}" alt="" srcset="">
             <div class="details">
-                <h2>accessories </h2>
-                <button class="text-uppercase">Shop now</button>
+                <button class="text-uppercase">KIDS & BABY</button>
             </div>
         </div>
     </div>
@@ -301,30 +298,30 @@
         <h4>Crazy deals</h4>
         <h2>buy 1 get 1 free</h2>
         <span>Best classic dress is on sale </span>
-        <button>Learn more</button>
+        <button id="bbox-1"> <a href="#"> Learn more</a></button>
     </div>
     <div class="banner-box banner-box2">
         <h4>Spring/Summer</h4>
         <h2>Upcoming season</h2>
         <span>Best classic dress is on sale </span>
-        <button>Collection</button>
+        <button id="bbox-2"> <a href="#"> Collection </a></button>
     </div>
 </section>
 <section id="banner3">
     <div class="banner-box banner-box2">
-        <h2>Long sleeves</h2>
-        <h3>Winter collection -40% OFF</h3>
+        <h2>JACKETS</h2>
+        <h3>WINTER COLLECTION 40% OFF</h3>
     </div>
     <div class="banner-box">
-        <h2>Long sleeves</h2>
-        <h3>Winter collection -40% OFF</h3>
+        <h2>ACCESSORIES</h2>
+        <h3>ACCESSORIES COLLECTION 25% OFF</h3>
     </div>
     <div class="banner-box banner-box3">
-        <h2>Long sleeves</h2>
-        <h3>Winter collection -40% OFF</h3>
+        <h2>SHOES</h2>
+        <h3>SUMMER COLLECTION 40% OFF</h3>
     </div>
 </section>
-<section id="newsletter" class="section-p1 section-m1">
+<section id="newsletter" class="section-p1 ">
     <div class="news-text">
         <h4>Sign up for our news letter</h4>
         <p>Get E-mail updates about our latest shop and <span>special offers</span></p>
@@ -334,49 +331,11 @@
         <button>Sign up</button>
     </div>
 </section>
-<footer class="section-p1">
-    <div class="col">
-        <img src="{{ asset('img/logo.png') }}" alt="" class="logo">
-        <h4>Contact</h4>
-        <p><strong>Address: </strong> 562 Wellington Road</p>
-        <p><strong>Phones: </strong> 562 Wellington Road</p>
-        <p><strong>Hours: </strong> 562 Wellington Road</p>
-        <div class="follow">
-            <h4>Follow us</h4>
-            <div class="icon">
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-twitter"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-youtube"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <h4>About</h4>
-        <a href="#">About us </a>
-        <a href="#">Delivery Information </a>
-        <a href="#">Privacy Policy </a>
-        <a href="#">Terms & Conditions </a>
-        <a href="#">Contact us </a>
-    </div>
-    <div class="col">
-        <h4>Account</h4>
-        <a href="#">Sign In </a>
-        <a href="#">View Cart </a>
-        <a href="#">My wishlist </a>
-        <a href="#">Track My Order </a>
-        <a href="#">Help</a>
-    </div>
-    <div class="col install">
-        <h4>Install app</h4>
-        <p>From App store or Google App</p>
-        <div class="row">
-            <img src="img/app.jpg" alt="">
-            <img src="img/play.jpg" alt="">
-        </div>
-        <p>Secure Payments Gateways</p>
-        <img src="img/pay.png" alt="">
-    </div>
+<!--footer starts from here-->
 
-</footer>
+@endsection
+@section('extra-js')
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 @endsection
