@@ -18,7 +18,7 @@ class CouponSeeder extends Seeder
             [
                 'code' => 'AB12',
                 'type' => 'fixed',
-                'value' => 9,
+                'value' => 900,
                 'percent_off' => 0,
             ],
             [

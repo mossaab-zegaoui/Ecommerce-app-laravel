@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Post;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -42,5 +43,16 @@ class MainController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+    public function contact_store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required'
+        ]);
+        Contact::create($request->all());
+        return back()->with('message', 'thanks for your message');
     }
 }

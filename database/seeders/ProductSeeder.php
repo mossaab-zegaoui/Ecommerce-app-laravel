@@ -14,117 +14,57 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $products = [
-            [
-                'name' => 'Adidas',
-                'description' => 'T-Shirt',
-                'price_ht' => 29.99,
+        // T-shirts
+        for ($i = 1; $i < 20; $i++) {
+            Product::create([
+                'category_id' => 1,
+                'name' => 'T-shirt ' . $i,
+                'slug' => 't-shirt ' . $i,
+                'price' => rand(2000, 4000),
+                'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, quas?',
+                'size' => ['S', 'M', 'L', 'XL'],
+                'quantity' => rand(10, 15),
                 'image' => 'img/f1.jpg',
-                'category_id' => 1,
-                'size' => json_encode(['S', 'M', 'L', 'XL']),
-                'quantity' => 5
-            ],
-            [
-                'name' => 'Adidas',
-                'description' => 'T-Shirt',
-                'price_ht' => 39.99,
-                'image' => 'img/f2.jpg',
+            ]);
+        }
+        // Shoes & Categories
+        for ($i = 1; $i < 20; $i++) {
+            Product::create([
+                'category_id' => 5,
+                'name' => 'Shoe  ' . $i,
+                'slug' => 'shoe ' . $i,
+                'price' => rand(2000, 4000),
+                'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, quas?',
+                'size' => ['S', 'M', 'L', 'XL'],
+                'quantity' => rand(10, 15),
+                'image' => 'img/shoe1.jpg',
+            ]);
+        }
+        // Trousers
+        for ($i = 1; $i < 20; $i++) {
+            Product::create([
                 'category_id' => 2,
-                'size' => json_encode(['S', 'M', 'L', 'XL']),
-                'quantity' => 3
-            ],
-            [
-                'name' => 'Adidas',
-                'description' => 'T-Shirt',
-                'price_ht' => 49.99,
-                'image' => 'img/f3.jpg',
-                'category_id' => 1,
-                'size' => json_encode(['S', 'M', 'L', 'XL']),
-                'quantity' => 5
-            ],
-            [
-                'name' => 'Adidas',
-                'description' => 'T-Shirt',
-                'price_ht' => 59.99,
-                'image' => 'img/f4.jpg',
-                'category_id' => 2,
-                'size' => json_encode(['S', 'M', 'L']),
-                'quantity' => 5
-            ],
-            [
-                'name' => 'Nike',
-                'description' => 'T-Shirt',
-                'price_ht' => 69.99,
-                'image' => 'img/f5.jpg',
-                'category_id' => 3,
-                'size' => json_encode(['S', 'M', 'L', 'XL']),
-                'quantity' => 5
-            ],
-            [
-                'name' => 'Nike',
-                'description' => 'T-Shirt',
-                'price_ht' => 79.99,
-                'image' => 'img/f6.jpg',
-                'category_id' => 3,
-                'size' => json_encode(['M', 'L', 'XL']),
-                'quantity' => 5
-            ],
-            [
-                'name' => 'Nike',
-                'description' => 'Long sleeves',
-                'price_ht' => 19.99,
+                'name' => 'Trouser ' . $i,
+                'slug' => 'trouser ' . $i,
+                'price' => rand(2000, 4000),
+                'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, quas?',
+                'size' => ['S', 'M', 'L', 'XL'],
+                'quantity' => rand(10, 15),
                 'image' => 'img/f7.jpg',
-                'category_id' => 4,
-                'size' => json_encode(['M', 'L', 'XL']),
-                'quantity' => 5
-            ],
-            [
-                'name' => 'Nike',
-                'description' => 'Long sleeves',
-                'price_ht' => 39.99,
-                'image' => 'img/f8.jpg',
-                'category_id' => 4,
-                'size' => json_encode(['M', 'L', 'XL']),
-                'quantity' => 5
-            ],
-            [
-                'name' => 'Adidas',
-                'description' => 'T-Shirt',
-                'price_ht' => 29.99,
-                'image' => 'img/f1.jpg',
-                'category_id' => 2,
-                'size' => json_encode(['M', 'L', 'XL']),
-                'quantity' => 5
-            ],
-            [
-                'name' => 'Adidas',
-                'description' => 'T-Shirt',
-                'price_ht' => 39.99,
-                'image' => 'img/f2.jpg',
-                'category_id' => 2,
-                'size' => json_encode(['M', 'L', 'XL']),
-                'quantity' => 5
-            ],
-            [
-                'name' => 'Adidas',
-                'description' => 'T-Shirt',
-                'price_ht' => 49.99,
-                'image' => 'img/f3.jpg',
-                'category_id' => 1,
-                'size' => json_encode(['M', 'L', 'XL']),
-                'quantity' => 5
-            ],
-            [
-                'name' => 'Adidas',
-                'description' => 'T-Shirt',
-                'price_ht' => 59.99,
-                'image' => 'img/f4.jpg',
-                'category_id' => 1,
-                'size' => json_encode(['XS', 'M', 'L', 'XL']),
-                'quantity' => 4
-            ],
-        ];
-
-        Product::insert($products);
+            ]);
+        }
+        // Jeans
+        for ($i = 1; $i < 20; $i++) {
+            Product::create([
+                'category_id' => 3,
+                'name' => 'Jean ' . $i,
+                'slug' => 'jean ' . $i,
+                'price' => rand(2000, 4000),
+                'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, quas?',
+                'size' => ['S', 'M', 'L', 'XL'],
+                'quantity' => rand(10, 15),
+                'image' => 'img/jacket2.jpg',
+            ]);
+        }
     }
 }

@@ -1,5 +1,19 @@
 @extends('layouts.app')
+@section('extra-css')
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
+<!-- Vendor CSS Files -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/swiper-bundle.min.css" rel="stylesheet">
+<link href="css/glightbox.min.css" rel="stylesheet">
+<link href="css/aos.css" rel="stylesheet">
+
+<!-- Template Main CSS Files -->
+<link href="css/variables.css" rel="stylesheet">
+<link href="css/main2.css" rel="stylesheet">
+@endsection
 @section('content')
 
 
@@ -34,44 +48,23 @@
     </div>
 </section>
 <section id="form-details">
-    <form action="">
-        <span>Write your message here</span>
+    @if (session('message'))
+    <div class="alert alert-success" role="alert">
+        {{ session('message')}}
+    </div>
+    @endif
+    <form action="{{ route('contact_store') }}" name="form-contact" method="POST">
+        @csrf
+        <span>
+            <h3>Write your message here </h3>
+        </span>
         <h2>We love to hear your feedback</h2>
-        <input type="text" placeholder="Enter your name ....">
-        <input type="text" placeholder="Enter your email ....">
-        <input type="text" placeholder="Enter your Subject ....">
-        <textarea name="" id="" cols="30" rows="10" placeholder="Right down your message ..."></textarea>
+        <input type="text" placeholder="Enter your name ...." id="name">
+        <input type="text" placeholder="Enter your email ...." id="email">
+        <input type="text" placeholder="Enter your Subject ...." id="subject">
+        <textarea name="" id="" cols="30" rows="10" placeholder="Right down your message ..." id="message"></textarea>
         <button type="submit">Send</button>
     </form>
-    <div class="people">
-        <div>
-            <img src="img/1.png" alt="">
-            <p>
-                <span>Eric John</span><br>
-                Senior Project Manager <br>
-                Phone: +212 585 368 215 <br>
-                Email: eric@gmail.com
-            </p>
-        </div>
-        <div>
-            <img src="img/2.png" alt="">
-            <p>
-                <span>Jake John</span><br>
-                Senior Marketing Manager <br>
-                Phone: +212 585 368 215 <br>
-                Email: jake@gmail.com
-            </p>
-        </div>
-        <div>
-            <img src="img/3.png" alt="">
-            <p>
-                <span>Kate John</span><br>
-                Senior Developer Manager<br>
-                Phone: +212 585 368 215 <br>
-                Email: logan@gmail.com
-            </p>
-        </div>
-    </div>
 </section>
 <section id="newsletter" class="section-p1">
     <div class="news-text">
@@ -89,6 +82,5 @@
     for (var i = 0; i < link.length; i++) {
         link[i].classList.remove('active');
     }
-</script>
 </script>
 @endsection

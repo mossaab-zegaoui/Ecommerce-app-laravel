@@ -858,7 +858,9 @@ h2.title {
     font-size: 24px;
     font-weight: 700;
 }
-
+.productinfo img{
+    max-height: 30vh;
+}
 .productinfo p {
     font-family: "Roboto", sans-serif;
     font-size: 14px;

@@ -27,16 +27,20 @@ Route::get('/', function () {
 });
 Route::get('/blog', [MainController::class, 'blog'])->name(('blog'));
 Route::get('/about', [MainController::class, 'about'])->name(('about'));
+// Mail
 Route::get('/contact', [MainController::class, 'contact'])->name(('contact'));
+Route::post('/contact', [MainController::class, 'contact_store'])->name(('contact_store'));
 
 // Shops
 Route::get('/shops', [MainController::class, 'index'])->name(('shops.index'));
 Route::get('/shops/{shop}/product', [MainController::class, 'show'])->name(('shops.show'));
 Route::get('/shops/{category}/categories', [MainController::class, 'categories'])->name(('shops.categories'));
+
 // Cart
 Route::get('/shops/cart', [CartController::class, 'index'])->name('shops.cart');
-Route::delete('/shops/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::POST('/shops', [CartController::class, 'store'])->name(('cart.store'));
+Route::delete('/shops/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
+Route::patch('/shops/cart/{cart}', [CartController::class, 'update'])->name('cart.update');
 
 
 // Coupons
@@ -48,8 +52,14 @@ Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.in
 Route::POST('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 Route::get('/checkout/destroy', [CheckoutController::class, 'destroy'])->name('checkout.destroy');
 
+// Send email
 
 Route::get('/subscribe', function () {
     return view('subscription');
 });
 Auth::routes();
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

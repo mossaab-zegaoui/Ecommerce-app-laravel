@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnIdCategorie extends Migration
+class AddColumnIdCategory extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ class AddColumnIdCategorie extends Migration
             $table->unsignedBigInteger('category_id')->after('id');
             $table->foreign('category_id')
                 ->references('id')
-                ->on('categories')
+                ->on('category')
                 ->onDelete('cascade');
         });
     }

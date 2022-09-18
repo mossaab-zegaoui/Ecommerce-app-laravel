@@ -1,10 +1,24 @@
 @extends('layouts.app')
+@section('extra-css')
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
+<!-- Vendor CSS Files -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/swiper-bundle.min.css" rel="stylesheet">
+<link href="css/glightbox.min.css" rel="stylesheet">
+<link href="css/aos.css" rel="stylesheet">
+
+<!-- Template Main CSS Files -->
+<link href="css/variables.css" rel="stylesheet">
+<link href="css/main2.css" rel="stylesheet">
+@endsection
 @section('content')
 
 <section id="home">
     <div class="container main_slider">
-        <h6>Spring / Summer Collection 2022</h6>
+        <h4>Spring / Summer Collection 2022</h4>
         <h1 class="home_h1"><span>Get up to 30% Off <br>
             </span> New Arrivals</h1>
         <div class="button_shop_now">
@@ -181,7 +195,7 @@
                         <i class="bi bi-star-fill"></i>
                         <i class="bi bi-star-fill"></i>
                     </div>
-                    <h4>$ 29.99</h4>
+                    <h4>$ 39.99</h4>
                     <a href="#"><i class="bi bi-cart3 cart"></i></a>
                 </div>
             </div>
@@ -196,7 +210,7 @@
                         <i class="bi bi-star-fill"></i>
                         <i class="bi bi-star-fill"></i>
                     </div>
-                    <h4>$ 29.99</h4>
+                    <h4>$ 59.99</h4>
                     <a href="#"><i class="bi bi-cart3 cart"></i></a>
                 </div>
             </div>
@@ -211,7 +225,7 @@
                         <i class="bi bi-star-fill"></i>
                         <i class="bi bi-star-fill"></i>
                     </div>
-                    <h4>$ 29.99</h4>
+                    <h4>$ 49.99</h4>
                     <a href="#"><i class="bi bi-cart3 cart"></i></a>
                 </div>
             </div>
@@ -226,7 +240,7 @@
                         <i class="bi bi-star-fill"></i>
                         <i class="bi bi-star-fill"></i>
                     </div>
-                    <h4>$ 29.99</h4>
+                    <h4>$ 49.99</h4>
                     <a href="#"><i class="bi bi-cart3 cart"></i></a>
                 </div>
             </div>
@@ -241,7 +255,7 @@
                         <i class="bi bi-star-fill"></i>
                         <i class="bi bi-star-fill"></i>
                     </div>
-                    <h4>$ 29.99</h4>
+                    <h4>$ 9.99</h4>
                     <a href="#"><i class="bi bi-cart3 cart"></i></a>
                 </div>
             </div>
@@ -256,7 +270,7 @@
                         <i class="bi bi-star-fill"></i>
                         <i class="bi bi-star-fill"></i>
                     </div>
-                    <h4>$ 29.99</h4>
+                    <h4>$ 59.99</h4>
                     <a href="#"><i class="bi bi-cart3 cart"></i></a>
                 </div>
             </div>
@@ -271,7 +285,7 @@
                         <i class="bi bi-star-fill"></i>
                         <i class="bi bi-star-fill"></i>
                     </div>
-                    <h4>$ 29.99</h4>
+                    <h4>$ 99.99</h4>
                     <a href="#"><i class="bi bi-cart3 cart"></i></a>
                 </div>
             </div>
@@ -286,7 +300,7 @@
                         <i class="bi bi-star-fill"></i>
                         <i class="bi bi-star-fill"></i>
                     </div>
-                    <h4>$ 29.99</h4>
+                    <h4>$ 9.99</h4>
                     <a href="#"><i class="bi bi-cart3 cart"></i></a>
                 </div>
             </div>

@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('content')
-
 <section id="prodetails" class="section-p1">
     <div class="single-pro-image">
         <img src="{{ asset($product->image) }}" width="100%" id="MainImg" alt="">
@@ -23,11 +21,11 @@
     <div class="single-pro-details">
         <h6>{{ $product->name}}</h6>
         <h4>{{ $product->description}}</h4>
-        <h2> $ {{$product->price_ht }}</h2>
+        <h2> @money($product->price)</h2>
         <select>
             <option value="">Select Size</option>
-            @foreach ($product->size as $size)
-            <option value="">{{$size}}</option>
+            @foreach($product->size as $size)
+            <option value="">{{ $size }}</option>
             @endforeach
         </select>
         <form action="{{ route('cart.store') }}" method="POST">
@@ -147,5 +145,9 @@
     }
     document.getElementById('link2').classList.add('active');
 </script>
-
+@endsection
+@section('extra-js')
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 @endsection

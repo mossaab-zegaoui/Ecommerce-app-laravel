@@ -1,33 +1,51 @@
 @extends('layouts.app')
+@section('extra-css')
+<script src="js/jquery.js" type="text/javascript"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<!-- Vendor CSS Files -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/swiper-bundle.min.css" rel="stylesheet">
+<link href="css/glightbox.min.css" rel="stylesheet">
+<link href="css/aos.css" rel="stylesheet">
+
+<!-- Template Main CSS Files -->
+<link href="css/variables.css" rel="stylesheet">
+<link href="css/main2.css" rel="stylesheet">
+@endsection
 @section('content')
-<div class="container mt-5">
+<div class="container section-m1">
     <div class="row">
-        @foreach($products as $product)
-        <div class="col-md-4">
-            <div class="card mb-4" style="width: 18rem;">
-                <img src=" {{ asset($product->image) }}" class="card-img-top" alt="...">
-                <div class="card-body" style="min-height: 280px;">
-                    <h5 class="card-title">{{ $product->name }}</h5>
-                    <p class="card-text"> {{ $product->description }}</p>
-                    <div class="row align-items-end">
-                        <div class="col-md-10">
-                            {{ $product->price_ht}} $
-                        </div>
-                        <div class="col-md-2">
-                            <a href="{{ route('shops.product' ,$product->id) }}" class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                                </svg></a>
+        <div class="col-sm-9 padding-right">
+            <div class="features_items">
+                <!--features_items-->
+                <h2 class="title text-center">Features Items</h2>
+                @if( session('message'))
+                {{ session('message')}}
+                @endif
+                @foreach($products as $product)
+                <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <a href="{{ route('shops.show' ,$product->id) }}"><img src=" {{ asset($product->image) }}" alt=""></a>
+                                <h3>@money($product->price) </h3>
+                                <h4> {{ $product->name }}</h4>
+                                <p>{{ $product->description }}</p>
+                                <a href="{{ route('shops.show' ,$product->id) }}" id="button-cart">
+                                    <i class="bi bi-cart3"></i>
+                                    Add to cart</a>
+                            </div>
                         </div>
                     </div>
-                    <p class="card-text mt-1"><small class="text-muted ">Last updated 3 mins ago</small></p>
                 </div>
+                @endforeach
             </div>
+            <ul class="pagination">
+                {!! $products->links() !!}
+            </ul>
         </div>
-        @endforeach
-
-
     </div>
 </div>
 @endsection

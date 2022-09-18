@@ -10,7 +10,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        $tax = Cart::tax() / 100;
+        $tax = config('cart.tax') / 100;
         $discount = session()->get('coupon')['discount'] ?? 0;
         $newSubtotal = (Cart::subtotal() - $discount);
         $newTax = $newSubtotal * $tax;
@@ -23,18 +23,24 @@ class CartController extends Controller
         $cartItem = Cart::add(
             [
                 'id' => $product->id,
-                'name' => $product->description,
+                'name' => $product->slug,
                 'qty' => $request->input('quantity'),
-                'price' => $product->price_ht,
+                'price' => $product->price,
                 'weight' => 550,
                 'options' =>  ['image' => $product->image]
             ]
         );
         return  back()->with('message', 'Order has been added to your cart');
     }
+    public function update(Request $request, $id)
+    {
+        Cart::update($id, $request->quantity);
+        session()->flash('message', 'quantity updated');
+        return response()->json(['success' => true]);
+    }
     public function destroy($id)
     {
         Cart::remove($id);
-        return back()->with('success', 'item removed');
+        return back()->with('message', 'item removed');
     }
 }

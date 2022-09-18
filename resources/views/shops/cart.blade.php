@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <section id="cart" class="section-p1">
     @if (session('message'))
@@ -40,10 +39,15 @@
                         <img src="{{ asset($cartItem->options['image']) }}" alt="">
                     </a>
                 </td>
-                <td>{{ $cartItem->name}}</td>
-                <td>$ {{ $cartItem->price }}</td>
-                <td><input type="number" value="{{ $cartItem->qty }}" disabled></td>
-                <td>$ {{ $cartItem->price * $cartItem->qty}}</td>
+                <td>{{ $cartItem->name }}</td>
+                <td> @money($cartItem->price)</td>
+                <td><select class="quantity" data-id="{{ $cartItem->rowId }}">
+                        @for($i = 1; $i < 5; $i++) { <option {{ $cartItem->qty == $i  ? 'selected' : ''}}>{{ $i }}</option>
+                            }
+                            @endfor
+                    </select></td>
+                <!-- <td><input type="number" value="{{ $cartItem->qty }}"></td> -->
+                <td> @money($cartItem->subtotal)</td>
             </tr>
             @endforeach
         </tbody>
@@ -61,7 +65,6 @@
                 <input type="text" placeholder="Enter your coupon" name="code" id="code">
                 <button type="submit">Apply coupon</button>
             </form>
-
         </div>
     </div>
     <div id="subtotal">
@@ -69,12 +72,12 @@
         <table>
             <tr>
                 <td>Cart Subtotal</td>
-                <td>$ {{ Cart::subtotal() }}</td>
+                <td>@money(Cart::subtotal())</td>
             </tr>
             @if(session()->has('coupon'))
             <tr>
                 <td>Discount ({{ session()->get('coupon')['name']}})</td>
-                <td>$ {{ $discount}}</td>
+                <td>@money($discount)</td>
             </tr>
             <tr>
                 <td>
@@ -88,25 +91,25 @@
             </tr>
             <tr>
                 <td>New Subtotal</td>
-                <td>$ {{ $newSubtotal }}</td>
+                <td>@money($newSubtotal)</td>
             </tr>
-
             <tr>
                 <td>Tax ( 21%) </td>
-                <td>{{ $newTax }}</td>
+                <td>@money($newTax)</td>
             </tr>
             <tr>
                 <td>Cart Total</td>
-                <td>$ {{ $newTotal }}</td>
+                <td>@money($newTotal)</td>
             </tr>
             @else
             <tr>
                 <td>Tax ( 21%) </td>
-                <td>{{ Cart::tax() }}</td>
+                <td>@money(Cart::tax())</td>
             </tr>
             <tr>
-                <td>Cart Total</td>
-                <td>$ {{ Cart::total() }}</td>
+                <td> <strong><span>Cart Total</span></strong></td>
+                <td> <strong>@money(Cart::total())</strong>
+                </td>
             </tr>
             @endif
         </table>
@@ -123,5 +126,27 @@
     document.getElementById('link4').classList.remove('active');
     document.getElementById('link5').classList.remove('active');
     document.getElementById('link6').classList.add('active');
+</script>
+@endsection
+@section('extra-js')
+<script>
+    (function() {
+        const className = document.querySelectorAll('.quantity');
+        Array.from(className).forEach(function(element) {
+            element.addEventListener('change', function() {
+
+                const id = element.getAttribute("data-id")
+                axios.patch(`/shops/cart/${id}`, {
+                        quantity: this.value
+                    })
+                    .then(function(response) {
+                        window.location.href = "{{ route('shops.cart') }}"
+                    })
+                    .catch(function(error) {
+                        console.log(error.response);
+                    });
+            })
+        })
+    })();
 </script>
 @endsection
