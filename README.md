@@ -1,65 +1,50 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Ecommerce application
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+The Ecommerce Application is a web-based platform that allows users to browse and purchase various products.
+It provides features such as user registration, login, product listing, shopping cart management, coupon code application, and secure checkout using the Stripe API.
 
-## About Laravel
+Features
+* User Registration: Users can create an account by providing their personal information.
+* User Login: Registered users can log in to their accounts securely.
+* Product Listing: Users can view a list of available products with details such as name, description, price, and image.
+* Shopping Cart: Users can add products to their shopping cart, modify quantities, and remove items.
+* Coupon Code Application: Users can apply coupon codes to avail discounts on their purchases.
+* Checkout with Stripe: Users can securely complete their purchases using the Stripe API for payment processing.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Instalation 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1- Clone the repository:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+https://github.com/mossaab-zegaoui/Ecommerce-app-laravel.git
+2- Navigate to the project directory
 
-## Learning Laravel
+cd Ecommerce-app-laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+3- Install the dependencies
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+npm install
 
-## Laravel Sponsors
+composer install
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+4- Set up the environment variables:
 
-### Premium Partners
+cp .env.example .env
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+php artisan key:generate
 
-## Contributing
+5- Run database migrations
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+php artisan migrate
+php artisan db:seed
+6- Start the application
+php artisan serve
 
-## Code of Conduct
+Images
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+![home_page](https://github.com/mossaab-zegaoui/Ecommerce-app-laravel/assets/97173944/b6c26334-ca72-46e1-ae37-4598999faf74)
+![products_page](https://github.com/mossaab-zegaoui/Ecommerce-app-laravel/assets/97173944/fd6c7b98-6dd8-4806-8404-7ab6d9ae28b0)
+![product](https://github.com/mossaab-zegaoui/Ecommerce-app-laravel/assets/97173944/12e48ab0-5af3-4475-a45e-3c611c3881e4)
+![cart_page](https://github.com/mossaab-zegaoui/Ecommerce-app-laravel/assets/97173944/3af2eea1-e442-4d6e-b4c6-d250bd86f304)
+![checkout_page](https://github.com/mossaab-zegaoui/Ecommerce-app-laravel/assets/97173944/631bdab7-b7eb-41a7-b033-52b2d357d2d3)
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-This project is a work in progress.
