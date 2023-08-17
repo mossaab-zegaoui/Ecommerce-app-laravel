@@ -3,7 +3,7 @@
 The Ecommerce Application is a web-based platform that allows users to browse and purchase various products.
 It provides features such as user registration, login, product listing, shopping cart management, coupon code application, and secure checkout using the Stripe API.
 
-Features
+**Features**
 * User Registration: Users can create an account by providing their personal information.
 * User Login: Registered users can log in to their accounts securely.
 * Product Listing: Users can view a list of available products with details such as name, description, price, and image.
@@ -11,7 +11,7 @@ Features
 * Coupon Code Application: Users can apply coupon codes to avail discounts on their purchases.
 * Checkout with Stripe: Users can securely complete their purchases using the Stripe API for payment processing.
 
-Instalation 
+**Instalation** 
 
 1- Clone the repository:
 
@@ -40,7 +40,7 @@ php artisan db:seed
 6- Start the application
 php artisan serve
 
-Images
+**Images**
 
 ![home_page](https://github.com/mossaab-zegaoui/Ecommerce-app-laravel/assets/97173944/b6c26334-ca72-46e1-ae37-4598999faf74)
 ![products_page](https://github.com/mossaab-zegaoui/Ecommerce-app-laravel/assets/97173944/fd6c7b98-6dd8-4806-8404-7ab6d9ae28b0)
