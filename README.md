@@ -16,6 +16,7 @@ Instalation
 1- Clone the repository:
 
 https://github.com/mossaab-zegaoui/Ecommerce-app-laravel.git
+
 2- Navigate to the project directory
 
 cd Ecommerce-app-laravel
